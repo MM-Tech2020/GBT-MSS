@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Domain]
+(
+	[DomainId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [DomainName] VARCHAR(50) NOT NULL
+)

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5942a0b5c2fa4ac78f84f4b750bdea24" Name="Diagram1">
+        <EntityTypeShape EntityType="SSOModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.Domain" Width="1.5" PointX="1.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.Module" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.Permission" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.Role" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.Session" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.Site" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.User" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.UserConfiguration" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.UserPermission" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.UserRole" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSOModel.UserSite" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="SSOModel.FK_Site_Domain" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_Module_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_Permissions_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserPermissions_Permissions" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_Session_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserSite_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserConfiguration_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserPermissions_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserRole_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SSOModel.FK_UserSite_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

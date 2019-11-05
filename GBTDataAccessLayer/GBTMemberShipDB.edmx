@@ -1,0 +1,1769 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GBTMembershipSolutionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar(max)" />
+          <Property Name="BrancheTaxID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClubID" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipNumber" Type="int" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Issuedate" Type="datetime" />
+          <Property Name="Deliverydate" Type="datetime" />
+          <Property Name="Expiringdate" Type="datetime" />
+          <Property Name="Requestdate" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="CardStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardStatusname" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CitizenAddresses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Addresse" Type="nvarchar(max)" />
+          <Property Name="PersonalID" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="CitizenID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="identitytype" Type="int" />
+          <Property Name="PersonalID" Type="int" />
+        </EntityType>
+        <EntityType Name="CitizenIDType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="citizenIdtpename" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ClubInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnglishName" Type="nvarchar(max)" />
+          <Property Name="ArabicName" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+          <Property Name="Addresses" Type="nvarchar(max)" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClubInterests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Interestsdescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Contactinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonalID" Type="int" />
+          <Property Name="Contacttype" Type="int" Nullable="false" />
+          <Property Name="Contactinfo" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacttype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contacttypename" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="educationdegreetype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Degreename" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Educationsinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationDegreetype" Type="int" />
+          <Property Name="EducationAuthority" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="PersonalID" Type="int" />
+        </EntityType>
+        <EntityType Name="jobcatogory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JobInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datefrom" Type="datetime" />
+          <Property Name="Dateto" Type="datetime" />
+          <Property Name="Jobtitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Jobdetailes" Type="nvarchar(max)" />
+          <Property Name="PersonalID" Type="int" />
+          <Property Name="jobcotogory" Type="int" />
+        </EntityType>
+        <EntityType Name="Membershipdata">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipID" Type="int" />
+          <Property Name="PersonalID" Type="int" />
+          <Property Name="FK_defaultNationalId" Type="int" />
+          <Property Name="FK_defaultContactId" Type="int" />
+          <Property Name="FK_defaultaddressesId" Type="int" />
+          <Property Name="Fk_currentjobid" Type="int" />
+          <Property Name="FK_educationID" Type="int" />
+          <Property Name="Membershipstatus" Type="int" />
+          <Property Name="Membershiptype" Type="int" />
+          <Property Name="ClubID" Type="int" />
+          <Property Name="Membershipapplicationreference" Type="nvarchar" MaxLength="50" />
+          <Property Name="Membershipapplicationdate" Type="datetime" />
+          <Property Name="recommeddationMembershipid" Type="int" />
+          <Property Name="Ismainsupplementary" Type="bit" />
+          <Property Name="RelationID" Type="int" />
+          <Property Name="Lastrenwelldate" Type="datetime" />
+          <Property Name="Nextrenwelldate" Type="datetime" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="suspenddate" Type="datetime" />
+          <Property Name="SSOID" Type="int" />
+        </EntityType>
+        <EntityType Name="Membershipinterests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipId" Type="int" />
+          <Property Name="clubinterestID" Type="int" />
+        </EntityType>
+        <EntityType Name="Membershiptype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Membershiptypename" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Memebershipstatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Statusname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Payments&amp;dues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Paiddate" Type="datetime" />
+          <Property Name="Satus" Type="int" />
+          <Property Name="Duedescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MembershipID" Type="int" />
+        </EntityType>
+        <EntityType Name="Personaldata">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname-EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddelName-EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname-EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firstname-Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddelName-Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname-Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photopath" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="DateofBirth" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PersonalInterests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Interestdescription" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonalInterstsData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonalID" Type="int" Nullable="false" />
+          <Property Name="PInterestID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremesisLimits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipID" Type="int" Nullable="false" />
+          <Property Name="Branchid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RelationName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RenewalData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipID" Type="int" />
+          <Property Name="Renwaldate" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Branches_ClubInfo">
+          <End Role="ClubInfo" Type="Self.ClubInfo" Multiplicity="0..1" />
+          <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Branches">
+              <PropertyRef Name="ClubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardData_CardStatus">
+          <End Role="CardStatus" Type="Self.CardStatus" Multiplicity="0..1" />
+          <End Role="CardData" Type="Self.CardData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CardData">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenAddresses_Personaldata">
+          <End Role="Personaldata" Type="Self.Personaldata" Multiplicity="0..1" />
+          <End Role="CitizenAddresses" Type="Self.CitizenAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CitizenAddresses">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenID_CitizenIDType">
+          <End Role="CitizenIDType" Type="Self.CitizenIDType" Multiplicity="0..1" />
+          <End Role="CitizenID" Type="Self.CitizenID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenIDType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CitizenID">
+              <PropertyRef Name="identitytype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenID_Personaldata">
+          <End Role="Personaldata" Type="Self.Personaldata" Multiplicity="0..1" />
+          <End Role="CitizenID" Type="Self.CitizenID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CitizenID">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactinfo_Contacttype">
+          <End Role="Contacttype" Type="Self.Contacttype" Multiplicity="1" />
+          <End Role="Contactinfo" Type="Self.Contactinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacttype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contactinfo">
+              <PropertyRef Name="Contacttype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactinfo_Personaldata">
+          <End Role="Personaldata" Type="Self.Personaldata" Multiplicity="0..1" />
+          <End Role="Contactinfo" Type="Self.Contactinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contactinfo">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educationsinfo_educationdegreetype">
+          <End Role="educationdegreetype" Type="Self.educationdegreetype" Multiplicity="0..1" />
+          <End Role="Educationsinfo" Type="Self.Educationsinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="educationdegreetype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Educationsinfo">
+              <PropertyRef Name="EducationDegreetype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educationsinfo_Personaldata">
+          <End Role="Personaldata" Type="Self.Personaldata" Multiplicity="0..1" />
+          <End Role="Educationsinfo" Type="Self.Educationsinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Educationsinfo">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobInfo_jobcatogory">
+          <End Role="jobcatogory" Type="Self.jobcatogory" Multiplicity="0..1" />
+          <End Role="JobInfo" Type="Self.JobInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobcatogory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobInfo">
+              <PropertyRef Name="jobcotogory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobInfo_Personaldata">
+          <End Role="Personaldata" Type="Self.Personaldata" Multiplicity="0..1" />
+          <End Role="JobInfo" Type="Self.JobInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobInfo">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipinterests_ClubInterests">
+          <End Role="ClubInterests" Type="Self.ClubInterests" Multiplicity="0..1" />
+          <End Role="Membershipinterests" Type="Self.Membershipinterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubInterests">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipinterests">
+              <PropertyRef Name="clubinterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipinterests_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="Membershipinterests" Type="Self.Membershipinterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipinterests">
+              <PropertyRef Name="MembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments&amp;dues_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="Payments&amp;dues" Type="Self.Payments&amp;dues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Payments&amp;dues">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments&amp;dues_Membershipdata1">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="Payments&amp;dues" Type="Self.Payments&amp;dues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Payments&amp;dues">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInterstsData_Personaldata">
+          <End Role="Personaldata" Type="Self.Personaldata" Multiplicity="1" />
+          <End Role="PersonalInterstsData" Type="Self.PersonalInterstsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonalInterstsData">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInterstsData_PersonalInterests">
+          <End Role="PersonalInterests" Type="Self.PersonalInterests" Multiplicity="1" />
+          <End Role="PersonalInterstsData" Type="Self.PersonalInterstsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInterests">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonalInterstsData">
+              <PropertyRef Name="PInterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PremesisLimits_Branches">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+          <End Role="PremesisLimits" Type="Self.PremesisLimits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PremesisLimits">
+              <PropertyRef Name="Branchid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PremesisLimits_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="1" />
+          <End Role="PremesisLimits" Type="Self.PremesisLimits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PremesisLimits">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RenewalData_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="RenewalData" Type="Self.RenewalData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RenewalData">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GBTMembershipSolutionModelStoreContainer">
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardData" EntityType="Self.CardData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardStatus" EntityType="Self.CardStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitizenAddresses" EntityType="Self.CitizenAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitizenID" EntityType="Self.CitizenID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitizenIDType" EntityType="Self.CitizenIDType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClubInfo" EntityType="Self.ClubInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClubInterests" EntityType="Self.ClubInterests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactinfo" EntityType="Self.Contactinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacttype" EntityType="Self.Contacttype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="educationdegreetype" EntityType="Self.educationdegreetype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Educationsinfo" EntityType="Self.Educationsinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jobcatogory" EntityType="Self.jobcatogory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobInfo" EntityType="Self.JobInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Membershipdata" EntityType="Self.Membershipdata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Membershipinterests" EntityType="Self.Membershipinterests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Membershiptype" EntityType="Self.Membershiptype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Memebershipstatus" EntityType="Self.Memebershipstatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments&amp;dues" EntityType="Self.Payments&amp;dues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personaldata" EntityType="Self.Personaldata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalInterests" EntityType="Self.PersonalInterests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalInterstsData" EntityType="Self.PersonalInterstsData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PremesisLimits" EntityType="Self.PremesisLimits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelationType" EntityType="Self.RelationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RenewalData" EntityType="Self.RenewalData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Branches_ClubInfo" Association="Self.FK_Branches_ClubInfo">
+            <End Role="ClubInfo" EntitySet="ClubInfo" />
+            <End Role="Branches" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardData_CardStatus" Association="Self.FK_CardData_CardStatus">
+            <End Role="CardStatus" EntitySet="CardStatus" />
+            <End Role="CardData" EntitySet="CardData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenAddresses_Personaldata" Association="Self.FK_CitizenAddresses_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldata" />
+            <End Role="CitizenAddresses" EntitySet="CitizenAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenID_CitizenIDType" Association="Self.FK_CitizenID_CitizenIDType">
+            <End Role="CitizenIDType" EntitySet="CitizenIDType" />
+            <End Role="CitizenID" EntitySet="CitizenID" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenID_Personaldata" Association="Self.FK_CitizenID_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldata" />
+            <End Role="CitizenID" EntitySet="CitizenID" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactinfo_Contacttype" Association="Self.FK_Contactinfo_Contacttype">
+            <End Role="Contacttype" EntitySet="Contacttype" />
+            <End Role="Contactinfo" EntitySet="Contactinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactinfo_Personaldata" Association="Self.FK_Contactinfo_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldata" />
+            <End Role="Contactinfo" EntitySet="Contactinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educationsinfo_educationdegreetype" Association="Self.FK_Educationsinfo_educationdegreetype">
+            <End Role="educationdegreetype" EntitySet="educationdegreetype" />
+            <End Role="Educationsinfo" EntitySet="Educationsinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educationsinfo_Personaldata" Association="Self.FK_Educationsinfo_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldata" />
+            <End Role="Educationsinfo" EntitySet="Educationsinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobInfo_jobcatogory" Association="Self.FK_JobInfo_jobcatogory">
+            <End Role="jobcatogory" EntitySet="jobcatogory" />
+            <End Role="JobInfo" EntitySet="JobInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobInfo_Personaldata" Association="Self.FK_JobInfo_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldata" />
+            <End Role="JobInfo" EntitySet="JobInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipinterests_ClubInterests" Association="Self.FK_Membershipinterests_ClubInterests">
+            <End Role="ClubInterests" EntitySet="ClubInterests" />
+            <End Role="Membershipinterests" EntitySet="Membershipinterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipinterests_Membershipdata" Association="Self.FK_Membershipinterests_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdata" />
+            <End Role="Membershipinterests" EntitySet="Membershipinterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments&amp;dues_Membershipdata" Association="Self.FK_Payments&amp;dues_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdata" />
+            <End Role="Payments&amp;dues" EntitySet="Payments&amp;dues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments&amp;dues_Membershipdata1" Association="Self.FK_Payments&amp;dues_Membershipdata1">
+            <End Role="Membershipdata" EntitySet="Membershipdata" />
+            <End Role="Payments&amp;dues" EntitySet="Payments&amp;dues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInterstsData_Personaldata" Association="Self.FK_PersonalInterstsData_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldata" />
+            <End Role="PersonalInterstsData" EntitySet="PersonalInterstsData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInterstsData_PersonalInterests" Association="Self.FK_PersonalInterstsData_PersonalInterests">
+            <End Role="PersonalInterests" EntitySet="PersonalInterests" />
+            <End Role="PersonalInterstsData" EntitySet="PersonalInterstsData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PremesisLimits_Branches" Association="Self.FK_PremesisLimits_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="PremesisLimits" EntitySet="PremesisLimits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PremesisLimits_Membershipdata" Association="Self.FK_PremesisLimits_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdata" />
+            <End Role="PremesisLimits" EntitySet="PremesisLimits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RenewalData_Membershipdata" Association="Self.FK_RenewalData_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdata" />
+            <End Role="RenewalData" EntitySet="RenewalData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GBTMembershipSolutionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BrancheTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClubID" Type="Int32" />
+          <NavigationProperty Name="ClubInfo" Relationship="Self.FK_Branches_ClubInfo" FromRole="Branches" ToRole="ClubInfo" />
+          <NavigationProperty Name="PremesisLimits" Relationship="Self.FK_PremesisLimits_Branches" FromRole="Branches" ToRole="PremesisLimits" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Issuedate" Type="DateTime" Precision="3" />
+          <Property Name="Deliverydate" Type="DateTime" Precision="3" />
+          <Property Name="Expiringdate" Type="DateTime" Precision="3" />
+          <Property Name="Requestdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="CardStatu" Relationship="Self.FK_CardData_CardStatus" FromRole="CardData" ToRole="CardStatus" />
+          <Property Name="MembershipNumber" Type="Int32" />
+          <NavigationProperty Name="Membershipdatas" Relationship="GBTMembershipSolutionModel.FK_Membershipdata_CardData" FromRole="CardData" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="CardStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CardStatusname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CardDatas" Relationship="Self.FK_CardData_CardStatus" FromRole="CardStatus" ToRole="CardData" />
+        </EntityType>
+        <EntityType Name="CitizenAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Addresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalID" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_CitizenAddresses" FromRole="CitizenAddresses" ToRole="Membershipdata" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_CitizenAddresses_Personaldata" FromRole="CitizenAddress" ToRole="Personaldata" />
+        </EntityType>
+        <EntityType Name="CitizenID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="identitytype" Type="Int32" />
+          <Property Name="PersonalID" Type="Int32" />
+          <NavigationProperty Name="CitizenIDType" Relationship="Self.FK_CitizenID_CitizenIDType" FromRole="CitizenID" ToRole="CitizenIDType" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_CitizenID" FromRole="CitizenID" ToRole="Membershipdata" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_CitizenID_Personaldata" FromRole="CitizenID" ToRole="Personaldata" />
+        </EntityType>
+        <EntityType Name="CitizenIDType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="citizenIdtpename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="CitizenIDs" Relationship="Self.FK_CitizenID_CitizenIDType" FromRole="CitizenIDType" ToRole="CitizenID" />
+        </EntityType>
+        <EntityType Name="ClubInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EnglishName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArabicName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+          <Property Name="Addresses" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK_Branches_ClubInfo" FromRole="ClubInfo" ToRole="Branches" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_ClubInfo" FromRole="ClubInfo" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="ClubInterest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Interestsdescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+          <NavigationProperty Name="Membershipinterests" Relationship="Self.FK_Membershipinterests_ClubInterests" FromRole="ClubInterests" ToRole="Membershipinterests" />
+        </EntityType>
+        <EntityType Name="Contacttype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Contacttypename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contactinfoes" Relationship="GBTMembershipSolutionModel.FK_Contactinfo_Contacttype" FromRole="Contacttype" ToRole="Contactinfo" />
+        </EntityType>
+        <EntityType Name="educationdegreetype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Degreename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Educationsinfoes" Relationship="Self.FK_Educationsinfo_educationdegreetype" FromRole="educationdegreetype" ToRole="Educationsinfo" />
+        </EntityType>
+        <EntityType Name="Educationsinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EducationDegreetype" Type="Int32" />
+          <Property Name="EducationAuthority" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalID" Type="Int32" />
+          <NavigationProperty Name="educationdegreetype1" Relationship="Self.FK_Educationsinfo_educationdegreetype" FromRole="Educationsinfo" ToRole="educationdegreetype" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_Educationsinfo" FromRole="Educationsinfo" ToRole="Membershipdata" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_Educationsinfo_Personaldata" FromRole="Educationsinfo" ToRole="Personaldata" />
+        </EntityType>
+        <EntityType Name="jobcatogory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JobInfoes" Relationship="Self.FK_JobInfo_jobcatogory" FromRole="jobcatogory" ToRole="JobInfo" />
+        </EntityType>
+        <EntityType Name="JobInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Datefrom" Type="DateTime" Precision="3" />
+          <Property Name="Dateto" Type="DateTime" Precision="3" />
+          <Property Name="Jobtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Jobdetailes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalID" Type="Int32" />
+          <Property Name="jobcotogory" Type="Int32" />
+          <NavigationProperty Name="jobcatogory" Relationship="Self.FK_JobInfo_jobcatogory" FromRole="JobInfo" ToRole="jobcatogory" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_JobInfo" FromRole="JobInfo" ToRole="Membershipdata" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_JobInfo_Personaldata" FromRole="JobInfo" ToRole="Personaldata" />
+        </EntityType>
+        <EntityType Name="Membershipdata">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonalID" Type="Int32" />
+          <Property Name="FK_defaultNationalId" Type="Int32" />
+          <Property Name="FK_defaultContactId" Type="Int32" />
+          <Property Name="FK_defaultaddressesId" Type="Int32" />
+          <Property Name="Fk_currentjobid" Type="Int32" />
+          <Property Name="FK_educationID" Type="Int32" />
+          <Property Name="Membershipstatus" Type="Int32" />
+          <Property Name="Membershiptype" Type="Int32" />
+          <Property Name="ClubID" Type="Int32" />
+          <Property Name="Membershipapplicationreference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Membershipapplicationdate" Type="DateTime" Precision="3" />
+          <Property Name="recommeddationMembershipid" Type="Int32" />
+          <Property Name="Ismainsupplementary" Type="Boolean" />
+          <Property Name="RelationID" Type="Int32" />
+          <Property Name="Lastrenwelldate" Type="DateTime" Precision="3" />
+          <Property Name="Nextrenwelldate" Type="DateTime" Precision="3" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="suspenddate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CitizenAddress" Relationship="Self.FK_Membershipdata_CitizenAddresses" FromRole="Membershipdata" ToRole="CitizenAddresses" />
+          <NavigationProperty Name="CitizenID" Relationship="Self.FK_Membershipdata_CitizenID" FromRole="Membershipdata" ToRole="CitizenID" />
+          <NavigationProperty Name="ClubInfo" Relationship="Self.FK_Membershipdata_ClubInfo" FromRole="Membershipdata" ToRole="ClubInfo" />
+          <NavigationProperty Name="Educationsinfo" Relationship="Self.FK_Membershipdata_Educationsinfo" FromRole="Membershipdata" ToRole="Educationsinfo" />
+          <NavigationProperty Name="JobInfo" Relationship="Self.FK_Membershipdata_JobInfo" FromRole="Membershipdata" ToRole="JobInfo" />
+          <NavigationProperty Name="Membershiptype1" Relationship="Self.FK_Membershipdata_Membershiptype" FromRole="Membershipdata" ToRole="Membershiptype" />
+          <NavigationProperty Name="Memebershipstatu" Relationship="Self.FK_Membershipdata_Memebershipstatus" FromRole="Membershipdata" ToRole="Memebershipstatus" />
+          <NavigationProperty Name="RelationType" Relationship="Self.FK_Membershipdata_RelationType" FromRole="Membershipdata" ToRole="RelationType" />
+          <NavigationProperty Name="Membershipinterests" Relationship="Self.FK_Membershipinterests_Membershipdata" FromRole="Membershipdata" ToRole="Membershipinterests" />
+          <NavigationProperty Name="Payments_dues" Relationship="Self.FK_Payments_dues_Membershipdata" FromRole="Membershipdata" ToRole="Payments_dues" />
+          <NavigationProperty Name="Payments_dues1" Relationship="Self.FK_Payments_dues_Membershipdata1" FromRole="Membershipdata" ToRole="Payments_dues" />
+          <NavigationProperty Name="PremesisLimits" Relationship="Self.FK_PremesisLimits_Membershipdata" FromRole="Membershipdata" ToRole="PremesisLimits" />
+          <NavigationProperty Name="RenewalDatas" Relationship="GBTMembershipSolutionModel.FK_RenewalData_Membershipdata" FromRole="Membershipdata" ToRole="RenewalData" />
+          <Property Name="MembershipID" Type="Int32" />
+          <NavigationProperty Name="CardData" Relationship="GBTMembershipSolutionModel.FK_Membershipdata_CardData" FromRole="Membershipdata" ToRole="CardData" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_Membershipdata_Personaldata" FromRole="Membershipdata" ToRole="Personaldata" />
+          <NavigationProperty Name="Contactinfo" Relationship="GBTMembershipSolutionModel.FK_Membershipdata_Contactinfo" FromRole="Membershipdata" ToRole="Contactinfo" />
+          <Property Name="SSOID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Membershipinterest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MembershipId" Type="Int32" />
+          <Property Name="clubinterestID" Type="Int32" />
+          <NavigationProperty Name="ClubInterest" Relationship="Self.FK_Membershipinterests_ClubInterests" FromRole="Membershipinterests" ToRole="ClubInterests" />
+          <NavigationProperty Name="Membershipdata" Relationship="Self.FK_Membershipinterests_Membershipdata" FromRole="Membershipinterests" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="Membershiptype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Membershiptypename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_Membershiptype" FromRole="Membershiptype" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="Memebershipstatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Statusname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_Memebershipstatus" FromRole="Memebershipstatus" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="Payments_dues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Paiddate" Type="DateTime" Precision="3" />
+          <Property Name="Satus" Type="Int32" />
+          <Property Name="Duedescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MembershipID" Type="Int32" />
+          <NavigationProperty Name="Membershipdata" Relationship="Self.FK_Payments_dues_Membershipdata" FromRole="Payments_dues" ToRole="Membershipdata" />
+          <NavigationProperty Name="Membershipdata1" Relationship="Self.FK_Payments_dues_Membershipdata1" FromRole="Payments_dues" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="PersonalInterest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Interestdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+          <NavigationProperty Name="PersonalInterstsDatas" Relationship="Self.FK_PersonalInterstsData_PersonalInterests" FromRole="PersonalInterests" ToRole="PersonalInterstsData" />
+        </EntityType>
+        <EntityType Name="PersonalInterstsData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PersonalID" Type="Int32" Nullable="false" />
+          <Property Name="PInterestID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PersonalInterest" Relationship="Self.FK_PersonalInterstsData_PersonalInterests" FromRole="PersonalInterstsData" ToRole="PersonalInterests" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_PersonalInterstsData_Personaldata" FromRole="PersonalInterstsData" ToRole="Personaldata" />
+        </EntityType>
+        <EntityType Name="PremesisLimit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MembershipID" Type="Int32" Nullable="false" />
+          <Property Name="Branchid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_PremesisLimits_Branches" FromRole="PremesisLimits" ToRole="Branches" />
+          <NavigationProperty Name="Membershipdata" Relationship="Self.FK_PremesisLimits_Membershipdata" FromRole="PremesisLimits" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="RelationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RelationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Membershipdatas" Relationship="Self.FK_Membershipdata_RelationType" FromRole="RelationType" ToRole="Membershipdata" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Branches_ClubInfo">
+          <End Role="ClubInfo" Type="Self.ClubInfo" Multiplicity="0..1" />
+          <End Role="Branches" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Branches">
+              <PropertyRef Name="ClubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PremesisLimits_Branches">
+          <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+          <End Role="PremesisLimits" Type="Self.PremesisLimit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PremesisLimits">
+              <PropertyRef Name="Branchid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardData_CardStatus">
+          <End Role="CardStatus" Type="Self.CardStatu" Multiplicity="0..1" />
+          <End Role="CardData" Type="Self.CardData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CardData">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_CitizenAddresses">
+          <End Role="CitizenAddresses" Type="Self.CitizenAddress" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenAddresses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="FK_defaultaddressesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenID_CitizenIDType">
+          <End Role="CitizenIDType" Type="Self.CitizenIDType" Multiplicity="0..1" />
+          <End Role="CitizenID" Type="Self.CitizenID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenIDType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CitizenID">
+              <PropertyRef Name="identitytype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_CitizenID">
+          <End Role="CitizenID" Type="Self.CitizenID" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenID">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="FK_defaultNationalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_ClubInfo">
+          <End Role="ClubInfo" Type="Self.ClubInfo" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="ClubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipinterests_ClubInterests">
+          <End Role="ClubInterests" Type="Self.ClubInterest" Multiplicity="0..1" />
+          <End Role="Membershipinterests" Type="Self.Membershipinterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubInterests">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipinterests">
+              <PropertyRef Name="clubinterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educationsinfo_educationdegreetype">
+          <End Role="educationdegreetype" Type="Self.educationdegreetype" Multiplicity="0..1" />
+          <End Role="Educationsinfo" Type="Self.Educationsinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="educationdegreetype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Educationsinfo">
+              <PropertyRef Name="EducationDegreetype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_Educationsinfo">
+          <End Role="Educationsinfo" Type="Self.Educationsinfo" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educationsinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="FK_educationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobInfo_jobcatogory">
+          <End Role="jobcatogory" Type="Self.jobcatogory" Multiplicity="0..1" />
+          <End Role="JobInfo" Type="Self.JobInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobcatogory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobInfo">
+              <PropertyRef Name="jobcotogory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_JobInfo">
+          <End Role="JobInfo" Type="Self.JobInfo" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="Fk_currentjobid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_Membershiptype">
+          <End Role="Membershiptype" Type="Self.Membershiptype" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershiptype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="Membershiptype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_Memebershipstatus">
+          <End Role="Memebershipstatus" Type="Self.Memebershipstatu" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Memebershipstatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="Membershipstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_RelationType">
+          <End Role="RelationType" Type="Self.RelationType" Multiplicity="0..1" />
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelationType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="RelationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipinterests_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="Membershipinterests" Type="Self.Membershipinterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipinterests">
+              <PropertyRef Name="MembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_dues_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="Payments_dues" Type="Self.Payments_dues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Payments_dues">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_dues_Membershipdata1">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="0..1" />
+          <End Role="Payments_dues" Type="Self.Payments_dues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Payments_dues">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PremesisLimits_Membershipdata">
+          <End Role="Membershipdata" Type="Self.Membershipdata" Multiplicity="1" />
+          <End Role="PremesisLimits" Type="Self.PremesisLimit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PremesisLimits">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInterstsData_PersonalInterests">
+          <End Role="PersonalInterests" Type="Self.PersonalInterest" Multiplicity="1" />
+          <End Role="PersonalInterstsData" Type="Self.PersonalInterstsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInterests">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonalInterstsData">
+              <PropertyRef Name="PInterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GBTMembershipSolutionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="CardDatas" EntityType="Self.CardData" />
+          <EntitySet Name="CardStatus" EntityType="Self.CardStatu" />
+          <EntitySet Name="CitizenAddresses" EntityType="Self.CitizenAddress" />
+          <EntitySet Name="CitizenIDs" EntityType="Self.CitizenID" />
+          <EntitySet Name="CitizenIDTypes" EntityType="Self.CitizenIDType" />
+          <EntitySet Name="ClubInfoes" EntityType="Self.ClubInfo" />
+          <EntitySet Name="ClubInterests" EntityType="Self.ClubInterest" />
+          <EntitySet Name="Contacttypes" EntityType="Self.Contacttype" />
+          <EntitySet Name="educationdegreetypes" EntityType="Self.educationdegreetype" />
+          <EntitySet Name="Educationsinfoes" EntityType="Self.Educationsinfo" />
+          <EntitySet Name="jobcatogories" EntityType="Self.jobcatogory" />
+          <EntitySet Name="JobInfoes" EntityType="Self.JobInfo" />
+          <EntitySet Name="Membershipdatas" EntityType="Self.Membershipdata" />
+          <EntitySet Name="Membershipinterests" EntityType="Self.Membershipinterest" />
+          <EntitySet Name="Membershiptypes" EntityType="Self.Membershiptype" />
+          <EntitySet Name="Memebershipstatus" EntityType="Self.Memebershipstatu" />
+          <EntitySet Name="Payments_dues" EntityType="Self.Payments_dues" />
+          <EntitySet Name="PersonalInterests" EntityType="Self.PersonalInterest" />
+          <EntitySet Name="PersonalInterstsDatas" EntityType="Self.PersonalInterstsData" />
+          <EntitySet Name="PremesisLimits" EntityType="Self.PremesisLimit" />
+          <EntitySet Name="RelationTypes" EntityType="Self.RelationType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Branches_ClubInfo" Association="Self.FK_Branches_ClubInfo">
+            <End Role="ClubInfo" EntitySet="ClubInfoes" />
+            <End Role="Branches" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PremesisLimits_Branches" Association="Self.FK_PremesisLimits_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="PremesisLimits" EntitySet="PremesisLimits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardData_CardStatus" Association="Self.FK_CardData_CardStatus">
+            <End Role="CardStatus" EntitySet="CardStatus" />
+            <End Role="CardData" EntitySet="CardDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_CitizenAddresses" Association="Self.FK_Membershipdata_CitizenAddresses">
+            <End Role="CitizenAddresses" EntitySet="CitizenAddresses" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenID_CitizenIDType" Association="Self.FK_CitizenID_CitizenIDType">
+            <End Role="CitizenIDType" EntitySet="CitizenIDTypes" />
+            <End Role="CitizenID" EntitySet="CitizenIDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_CitizenID" Association="Self.FK_Membershipdata_CitizenID">
+            <End Role="CitizenID" EntitySet="CitizenIDs" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_ClubInfo" Association="Self.FK_Membershipdata_ClubInfo">
+            <End Role="ClubInfo" EntitySet="ClubInfoes" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipinterests_ClubInterests" Association="Self.FK_Membershipinterests_ClubInterests">
+            <End Role="ClubInterests" EntitySet="ClubInterests" />
+            <End Role="Membershipinterests" EntitySet="Membershipinterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educationsinfo_educationdegreetype" Association="Self.FK_Educationsinfo_educationdegreetype">
+            <End Role="educationdegreetype" EntitySet="educationdegreetypes" />
+            <End Role="Educationsinfo" EntitySet="Educationsinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_Educationsinfo" Association="Self.FK_Membershipdata_Educationsinfo">
+            <End Role="Educationsinfo" EntitySet="Educationsinfoes" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobInfo_jobcatogory" Association="Self.FK_JobInfo_jobcatogory">
+            <End Role="jobcatogory" EntitySet="jobcatogories" />
+            <End Role="JobInfo" EntitySet="JobInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_JobInfo" Association="Self.FK_Membershipdata_JobInfo">
+            <End Role="JobInfo" EntitySet="JobInfoes" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_Membershiptype" Association="Self.FK_Membershipdata_Membershiptype">
+            <End Role="Membershiptype" EntitySet="Membershiptypes" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_Memebershipstatus" Association="Self.FK_Membershipdata_Memebershipstatus">
+            <End Role="Memebershipstatus" EntitySet="Memebershipstatus" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_RelationType" Association="Self.FK_Membershipdata_RelationType">
+            <End Role="RelationType" EntitySet="RelationTypes" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipinterests_Membershipdata" Association="Self.FK_Membershipinterests_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+            <End Role="Membershipinterests" EntitySet="Membershipinterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_dues_Membershipdata" Association="Self.FK_Payments_dues_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+            <End Role="Payments_dues" EntitySet="Payments_dues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_dues_Membershipdata1" Association="Self.FK_Payments_dues_Membershipdata1">
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+            <End Role="Payments_dues" EntitySet="Payments_dues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PremesisLimits_Membershipdata" Association="Self.FK_PremesisLimits_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+            <End Role="PremesisLimits" EntitySet="PremesisLimits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInterstsData_PersonalInterests" Association="Self.FK_PersonalInterstsData_PersonalInterests">
+            <End Role="PersonalInterests" EntitySet="PersonalInterests" />
+            <End Role="PersonalInterstsData" EntitySet="PersonalInterstsDatas" />
+          </AssociationSet>
+          <EntitySet Name="RenewalDatas" EntityType="GBTMembershipSolutionModel.RenewalData" />
+          <AssociationSet Name="FK_RenewalData_Membershipdata" Association="GBTMembershipSolutionModel.FK_RenewalData_Membershipdata">
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+            <End Role="RenewalData" EntitySet="RenewalDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_CardData" Association="GBTMembershipSolutionModel.FK_Membershipdata_CardData">
+            <End Role="CardData" EntitySet="CardDatas" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <EntitySet Name="Personaldatas" EntityType="GBTMembershipSolutionModel.Personaldata" />
+          <AssociationSet Name="FK_CitizenAddresses_Personaldata" Association="GBTMembershipSolutionModel.FK_CitizenAddresses_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="CitizenAddress" EntitySet="CitizenAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenID_Personaldata" Association="GBTMembershipSolutionModel.FK_CitizenID_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="CitizenID" EntitySet="CitizenIDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educationsinfo_Personaldata" Association="GBTMembershipSolutionModel.FK_Educationsinfo_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="Educationsinfo" EntitySet="Educationsinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobInfo_Personaldata" Association="GBTMembershipSolutionModel.FK_JobInfo_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="JobInfo" EntitySet="JobInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_Personaldata" Association="GBTMembershipSolutionModel.FK_Membershipdata_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInterstsData_Personaldata" Association="GBTMembershipSolutionModel.FK_PersonalInterstsData_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="PersonalInterstsData" EntitySet="PersonalInterstsDatas" />
+          </AssociationSet>
+          <EntitySet Name="Contactinfoes" EntityType="GBTMembershipSolutionModel.Contactinfo" />
+          <AssociationSet Name="FK_Contactinfo_Contacttype" Association="GBTMembershipSolutionModel.FK_Contactinfo_Contacttype">
+            <End Role="Contacttype" EntitySet="Contacttypes" />
+            <End Role="Contactinfo" EntitySet="Contactinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactinfo_Personaldata" Association="GBTMembershipSolutionModel.FK_Contactinfo_Personaldata">
+            <End Role="Personaldata" EntitySet="Personaldatas" />
+            <End Role="Contactinfo" EntitySet="Contactinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membershipdata_Contactinfo" Association="GBTMembershipSolutionModel.FK_Membershipdata_Contactinfo">
+            <End Role="Contactinfo" EntitySet="Contactinfoes" />
+            <End Role="Membershipdata" EntitySet="Membershipdatas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RenewalData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipID" Type="Int32" />
+          <Property Name="Renwaldate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="Membershipdata" Relationship="GBTMembershipSolutionModel.FK_RenewalData_Membershipdata" FromRole="RenewalData" ToRole="Membershipdata" />
+        </EntityType>
+        <Association Name="FK_RenewalData_Membershipdata">
+          <End Type="GBTMembershipSolutionModel.Membershipdata" Role="Membershipdata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.RenewalData" Role="RenewalData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membershipdata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RenewalData">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_CardData">
+          <End Type="GBTMembershipSolutionModel.CardData" Role="CardData" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.Membershipdata" Role="Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Personaldata">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddelName_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddelName_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photopath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="DateofBirth" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CitizenAddresses" Relationship="GBTMembershipSolutionModel.FK_CitizenAddresses_Personaldata" FromRole="Personaldata" ToRole="CitizenAddress" />
+          <NavigationProperty Name="CitizenIDs" Relationship="GBTMembershipSolutionModel.FK_CitizenID_Personaldata" FromRole="Personaldata" ToRole="CitizenID" />
+          <NavigationProperty Name="Educationsinfoes" Relationship="GBTMembershipSolutionModel.FK_Educationsinfo_Personaldata" FromRole="Personaldata" ToRole="Educationsinfo" />
+          <NavigationProperty Name="JobInfoes" Relationship="GBTMembershipSolutionModel.FK_JobInfo_Personaldata" FromRole="Personaldata" ToRole="JobInfo" />
+          <NavigationProperty Name="Membershipdatas" Relationship="GBTMembershipSolutionModel.FK_Membershipdata_Personaldata" FromRole="Personaldata" ToRole="Membershipdata" />
+          <NavigationProperty Name="PersonalInterstsDatas" Relationship="GBTMembershipSolutionModel.FK_PersonalInterstsData_Personaldata" FromRole="Personaldata" ToRole="PersonalInterstsData" />
+          <NavigationProperty Name="Contactinfoes" Relationship="GBTMembershipSolutionModel.FK_Contactinfo_Personaldata" FromRole="Personaldata" ToRole="Contactinfo" />
+        </EntityType>
+        <Association Name="FK_CitizenAddresses_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.CitizenAddress" Role="CitizenAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CitizenAddress">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenID_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.CitizenID" Role="CitizenID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CitizenID">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educationsinfo_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.Educationsinfo" Role="Educationsinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Educationsinfo">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobInfo_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.JobInfo" Role="JobInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobInfo">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.Membershipdata" Role="Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInterstsData_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="1" />
+          <End Type="GBTMembershipSolutionModel.PersonalInterstsData" Role="PersonalInterstsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonalInterstsData">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Contactinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PersonalID" Type="Int32" />
+          <Property Name="Contacttype" Type="Int32" Nullable="false" />
+          <Property Name="Contactinfo1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contacttype1" Relationship="GBTMembershipSolutionModel.FK_Contactinfo_Contacttype" FromRole="Contactinfo" ToRole="Contacttype" />
+          <NavigationProperty Name="Personaldata" Relationship="GBTMembershipSolutionModel.FK_Contactinfo_Personaldata" FromRole="Contactinfo" ToRole="Personaldata" />
+          <NavigationProperty Name="Membershipdatas" Relationship="GBTMembershipSolutionModel.FK_Membershipdata_Contactinfo" FromRole="Contactinfo" ToRole="Membershipdata" />
+        </EntityType>
+        <Association Name="FK_Contactinfo_Contacttype">
+          <End Type="GBTMembershipSolutionModel.Contacttype" Role="Contacttype" Multiplicity="1" />
+          <End Type="GBTMembershipSolutionModel.Contactinfo" Role="Contactinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacttype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contactinfo">
+              <PropertyRef Name="Contacttype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactinfo_Personaldata">
+          <End Type="GBTMembershipSolutionModel.Personaldata" Role="Personaldata" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.Contactinfo" Role="Contactinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personaldata">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contactinfo">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membershipdata_Contactinfo">
+          <End Type="GBTMembershipSolutionModel.Contactinfo" Role="Contactinfo" Multiplicity="0..1" />
+          <End Type="GBTMembershipSolutionModel.Membershipdata" Role="Membershipdata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contactinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membershipdata">
+              <PropertyRef Name="FK_defaultContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GBTMembershipSolutionModelStoreContainer" CdmEntityContainer="GBTMembershipSolutionEntities">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BrancheTaxID" ColumnName="BrancheTaxID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardDatas">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.CardData">
+              <MappingFragment StoreEntitySet="CardData">
+                <ScalarProperty Name="MembershipNumber" ColumnName="MembershipNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Issuedate" ColumnName="Issuedate" />
+                <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+                <ScalarProperty Name="Expiringdate" ColumnName="Expiringdate" />
+                <ScalarProperty Name="Requestdate" ColumnName="Requestdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardStatus">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.CardStatu">
+              <MappingFragment StoreEntitySet="CardStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardStatusname" ColumnName="CardStatusname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitizenAddresses">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.CitizenAddress">
+              <MappingFragment StoreEntitySet="CitizenAddresses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitizenIDs">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.CitizenID">
+              <MappingFragment StoreEntitySet="CitizenID">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="identitytype" ColumnName="identitytype" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitizenIDTypes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.CitizenIDType">
+              <MappingFragment StoreEntitySet="CitizenIDType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="citizenIdtpename" ColumnName="citizenIdtpename" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubInfoes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.ClubInfo">
+              <MappingFragment StoreEntitySet="ClubInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Addresses" ColumnName="Addresses" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubInterests">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.ClubInterest">
+              <MappingFragment StoreEntitySet="ClubInterests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Interestsdescription" ColumnName="Interestsdescription" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacttypes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Contacttype">
+              <MappingFragment StoreEntitySet="Contacttype">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Contacttypename" ColumnName="Contacttypename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="educationdegreetypes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.educationdegreetype">
+              <MappingFragment StoreEntitySet="educationdegreetype">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Degreename" ColumnName="Degreename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educationsinfoes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Educationsinfo">
+              <MappingFragment StoreEntitySet="Educationsinfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EducationDegreetype" ColumnName="EducationDegreetype" />
+                <ScalarProperty Name="EducationAuthority" ColumnName="EducationAuthority" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobcatogories">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.jobcatogory">
+              <MappingFragment StoreEntitySet="jobcatogory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobInfoes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.JobInfo">
+              <MappingFragment StoreEntitySet="JobInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Datefrom" ColumnName="Datefrom" />
+                <ScalarProperty Name="Dateto" ColumnName="Dateto" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Jobdetailes" ColumnName="Jobdetailes" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+                <ScalarProperty Name="jobcotogory" ColumnName="jobcotogory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Membershipdatas">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Membershipdata">
+              <MappingFragment StoreEntitySet="Membershipdata">
+                <ScalarProperty Name="SSOID" ColumnName="SSOID" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+                <ScalarProperty Name="FK_defaultNationalId" ColumnName="FK_defaultNationalId" />
+                <ScalarProperty Name="FK_defaultContactId" ColumnName="FK_defaultContactId" />
+                <ScalarProperty Name="FK_defaultaddressesId" ColumnName="FK_defaultaddressesId" />
+                <ScalarProperty Name="Fk_currentjobid" ColumnName="Fk_currentjobid" />
+                <ScalarProperty Name="FK_educationID" ColumnName="FK_educationID" />
+                <ScalarProperty Name="Membershipstatus" ColumnName="Membershipstatus" />
+                <ScalarProperty Name="Membershiptype" ColumnName="Membershiptype" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+                <ScalarProperty Name="Membershipapplicationreference" ColumnName="Membershipapplicationreference" />
+                <ScalarProperty Name="Membershipapplicationdate" ColumnName="Membershipapplicationdate" />
+                <ScalarProperty Name="recommeddationMembershipid" ColumnName="recommeddationMembershipid" />
+                <ScalarProperty Name="Ismainsupplementary" ColumnName="Ismainsupplementary" />
+                <ScalarProperty Name="RelationID" ColumnName="RelationID" />
+                <ScalarProperty Name="Lastrenwelldate" ColumnName="Lastrenwelldate" />
+                <ScalarProperty Name="Nextrenwelldate" ColumnName="Nextrenwelldate" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="suspenddate" ColumnName="suspenddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Membershipinterests">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Membershipinterest">
+              <MappingFragment StoreEntitySet="Membershipinterests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MembershipId" ColumnName="MembershipId" />
+                <ScalarProperty Name="clubinterestID" ColumnName="clubinterestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Membershiptypes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Membershiptype">
+              <MappingFragment StoreEntitySet="Membershiptype">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Membershiptypename" ColumnName="Membershiptypename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memebershipstatus">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Memebershipstatu">
+              <MappingFragment StoreEntitySet="Memebershipstatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Statusname" ColumnName="Statusname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments_dues">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Payments_dues">
+              <MappingFragment StoreEntitySet="Payments&amp;dues">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Paiddate" ColumnName="Paiddate" />
+                <ScalarProperty Name="Satus" ColumnName="Satus" />
+                <ScalarProperty Name="Duedescription" ColumnName="Duedescription" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalInterests">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.PersonalInterest">
+              <MappingFragment StoreEntitySet="PersonalInterests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Interestdescription" ColumnName="Interestdescription" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalInterstsDatas">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.PersonalInterstsData">
+              <MappingFragment StoreEntitySet="PersonalInterstsData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+                <ScalarProperty Name="PInterestID" ColumnName="PInterestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremesisLimits">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.PremesisLimit">
+              <MappingFragment StoreEntitySet="PremesisLimits">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="Branchid" ColumnName="Branchid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationTypes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.RelationType">
+              <MappingFragment StoreEntitySet="RelationType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RelationName" ColumnName="RelationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RenewalDatas">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.RenewalData">
+              <MappingFragment StoreEntitySet="RenewalData">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Renwaldate" ColumnName="Renwaldate" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personaldatas">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Personaldata">
+              <MappingFragment StoreEntitySet="Personaldata">
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+                <ScalarProperty Name="Lastname_Ar" ColumnName="Lastname-Ar" />
+                <ScalarProperty Name="MiddelName_Ar" ColumnName="MiddelName-Ar" />
+                <ScalarProperty Name="Firstname_Ar" ColumnName="Firstname-Ar" />
+                <ScalarProperty Name="Lastname_EN" ColumnName="Lastname-EN" />
+                <ScalarProperty Name="MiddelName_EN" ColumnName="MiddelName-EN" />
+                <ScalarProperty Name="Firstname_EN" ColumnName="Firstname-EN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactinfoes">
+            <EntityTypeMapping TypeName="GBTMembershipSolutionModel.Contactinfo">
+              <MappingFragment StoreEntitySet="Contactinfo">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Contactinfo1" ColumnName="Contactinfo" />
+                <ScalarProperty Name="Contacttype" ColumnName="Contacttype" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
